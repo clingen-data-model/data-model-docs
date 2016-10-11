@@ -41,11 +41,16 @@
 # end
 
 # Methods defined in the helpers block are available in templates
-# helpers do
-#   def some_helper
-#     "Helping"
-#   end
-# end
+helpers do
+  def model_link(model)
+    # %(<li class="#{model}"><a href="/#{model}"><span class="glyphicon #{data.models[model].icon}"></span>#{model.capitalize}</a></li>)
+    resource = sitemap.find_resource_by_path("#{model}/index.html")
+    link = link_to(resource) do
+      %(<span class="glyphicon #{data.models[model].icon}"></span>#{model.capitalize})
+    end
+    %(<li class="#{model}">#{link}</li>)
+  end
+end
 
 set :css_dir, 'stylesheets'
 
@@ -70,3 +75,5 @@ configure :build do
   # Or use a different image path
   # set :http_prefix, "/Content/images/"
 end
+
+

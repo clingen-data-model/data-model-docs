@@ -5,16 +5,14 @@
       <ul class="nav nav-sidebar">
         <li class='nav-sidebar-title'>
           <%= image_tag 'clingen-doc-logo.png', width: "438", height: "108", alt: "ClinGen Documentation", class: "img-responsive" %>
-          <!-- <img src="/images/clingen-doc-logo.png" width="438" height="108" alt="ClinGen Documentation" class="img-responsive"/> -->
         </li>
-        <li><%= local_link "Overview", "/" %></li>
-        <li><%= local_link "FHIR", "/fhir.html" %></li>
-        <li><%= local_link "Releases", "/releases.html" %></li>
+        <li><%= link_to "Overview", "/" %></li>
+        <li><%= link_to "FHIR", "/fhir.html" %></li>
+        <li><%= link_to "Releases", "/releases.html" %></li>
         <li><%= link_to "GitHub Project", "https://github.com/tnavatar/clingen-data-model" %></li>
         <% data.models.each do |m, config| %>
-        <%= model_link(m) %>
+          <%= model_link(m) %>
         <% end %> 
-
       </ul>
     </div>
     <div class="col-sm-8 col-sm-offset-4 col-md-9 col-md-offset-3 main">
