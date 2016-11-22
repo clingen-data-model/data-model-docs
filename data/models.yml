@@ -3,3 +3,7 @@ allele:
   repository: "git@github.com:clingen-data-model/allele.git"
   versions:
     - "0.1"
+interpretation:
+  icon: glyphicon-star
+  repository: "git@github.com:clingen-data-model/interpretation.git"
+  versions: []

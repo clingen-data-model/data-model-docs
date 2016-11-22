@@ -43,8 +43,7 @@
 # Methods defined in the helpers block are available in templates
 helpers do
   def model_link(model)
-    # %(<li class="#{model}"><a href="/#{model}"><span class="glyphicon #{data.models[model].icon}"></span>#{model.capitalize}</a></li>)
-    resource = sitemap.find_resource_by_path("#{model}/index.html")
+    resource = "#{model}/master/index.html"
     link = link_to(resource) do
       %(<span class="glyphicon #{data.models[model].icon}"></span>#{model.capitalize})
     end
@@ -70,7 +69,7 @@ configure :build do
   # activate :asset_hash
 
   # Use relative URLs
-  # activate :relative_assets
+  activate :relative_assets
 
   # Or use a different image path
   # set :http_prefix, "/Content/images/"

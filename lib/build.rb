@@ -39,6 +39,7 @@ models.each do |k, v|
     target = File.join('..', '..', 'build', k, version)
     FileUtils.mv('build', target)
   end
+  FileUtils.cd('..')
 end
 
 
