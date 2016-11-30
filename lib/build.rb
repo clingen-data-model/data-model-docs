@@ -28,6 +28,7 @@ models.each do |k, v|
   FileUtils.cd(k)
   puts "buliding master"
   repo.checkout('master')
+  `bundle`
   `bundle exec middleman build`
   target = File.join('..', '..', 'build', k, 'master')
   FileUtils.mv('build', target)
