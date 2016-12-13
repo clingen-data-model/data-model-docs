@@ -28,15 +28,16 @@ models.each do |k, v|
   FileUtils.cd(k)
   puts "buliding master"
   repo.checkout('master')
-  `bundle`
-  `bundle exec middleman build`
+  raise "error installing bundle for master of #{k}" unless system('bundle')
+  raise "error building master of #{k}" unless system('bundle', 'exec', 'middleman', 'build')
   target = File.join('..', '..', 'build', k, 'master')
   FileUtils.mv('build', target)
   v['versions'].each do |version|
     puts "building #{version}"
     FileUtils.rm_rf('build')
     repo.checkout(version)
-    `bundle exec middleman build`
+    raise "error installing bundle for #{version} of #{k}" unless system('bundle')
+    raise "error building #{version} of #{k}" unless system('bundle', 'exec', 'middleman', 'build')
     target = File.join('..', '..', 'build', k, version)
     FileUtils.mv('build', target)
   end
