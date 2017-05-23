@@ -6,44 +6,57 @@ require 'fileutils'
 
 DOC_REPO_URI =
   "git@github.com:clingen-data-model/clingen-data-model.github.io.git"
+DOC_REPO_LOCAL = 'clingen-data-model.github.io'
 
 # load the list of versions
 models = YAML.load_file('data/models.yml')
 
 # Create documentation in a staging directory
-puts "building base repo"
+puts "Cleaning old builds"
 FileUtils.rm_rf('build')
 FileUtils.rm_rf('stage')
+FileUtils.rm_rf(DOC_REPO_LOCAL)
+puts "checking out github pages repo"
+Git.clone DOC_REPO_URI, DOC_REPO_LOCAL, :depth => 1
+puts "building base repo"
 `bundle exec middleman build`
 
-FileUtils.mkdir_p('stage')
-FileUtils.cd('stage')
+FileUtils.rm_rf Dir.glob("#{DOC_REPO_LOCAL}/*") # remove everything except dotfiles (like '.git'...)
+FileUtils.cp_r("build/.", DOC_REPO_LOCAL)
 
-puts "building models"
-models.each do |k, v|
-  puts "building #{k}"
-  puts v.to_yaml
-  repo = Git.clone(v['repository'], k)
-  FileUtils.mkdir_p("../build/#{k}")
-  FileUtils.cd(k)
-  puts "buliding master"
-  repo.checkout('master')
-  raise "error installing bundle for master of #{k}" unless system('bundle')
-  raise "error building master of #{k}" unless system('bundle', 'exec', 'middleman', 'build')
-  target = File.join('..', '..', 'build', k, 'master')
-  FileUtils.mv('build', target)
-  v['versions'].each do |version|
-    puts "building #{version}"
-    FileUtils.rm_rf('build')
-    repo.checkout(version)
-    raise "error installing bundle for #{version} of #{k}" unless system('bundle')
-    raise "error building #{version} of #{k}" unless system('bundle', 'exec', 'middleman', 'build')
-    target = File.join('..', '..', 'build', k, version)
-    FileUtils.mv('build', target)
+FileUtils.mkdir_p('stage')
+
+FileUtils.cd('stage') do
+  puts "building models"
+  models.each do |k, v|
+    puts "building #{k}"
+    puts v.to_yaml
+    repo = Git.clone(v['repository'], k)
+    FileUtils.mkdir_p(File.join('..', DOC_REPO_LOCAL, k))
+    FileUtils.cd(k) do
+      puts "buliding master"
+      repo.checkout('master')
+      raise "error installing bundle for master of #{k}" unless system('bundle')
+      raise "error building master of #{k}" unless system('bundle', 'exec', 'middleman', 'build')
+      target = File.join('..', '..', DOC_REPO_LOCAL, k, 'master')
+      FileUtils.mv('build', target)
+      v['versions'].each do |version|
+        puts "building #{version}"
+        FileUtils.rm_rf('build')
+        repo.checkout(version)
+        raise "error installing bundle for #{version} of #{k}" unless system('bundle')
+        raise "error building #{version} of #{k}" unless system('bundle', 'exec', 'middleman', 'build')
+        target = File.join('..', '..', DOC_REPO_LOCAL, k, version)
+        FileUtils.mv('build', target)
+      end
+    end
   end
-  FileUtils.cd('..')
 end
 
+g = Git.open(DOC_REPO_LOCAL)
+g.add(:all=>true)
+
+puts "Changes are staged to #{DOC_REPO_LOCAL}, 'git commit' there if you dare..."
 
 # for each version...
 

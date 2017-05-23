@@ -10,6 +10,7 @@
 # Ignore the build directory
 /build/**
 /stage/**
+/clingen-data-model.github.io/
 
 # Ignore cache
 /.sass-cache
