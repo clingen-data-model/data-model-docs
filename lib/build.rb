@@ -40,6 +40,15 @@ FileUtils.cd('stage') do
       raise "error building master of #{k}" unless system('bundle', 'exec', 'middleman', 'build')
       target = File.join('..', '..', DOC_REPO_LOCAL, k, 'master')
       FileUtils.mv('build', target)
+      FileUtils.cd(File.join('..', '..', DOC_REPO_LOCAL, k)) do
+        Dir.glob(File.join('master', '*')).each do |target|
+          if File.directory? target
+            FileUtils.ln_s target, '.'
+          else
+            FileUtils.ln target, '.'
+          end
+        end
+      end
       v['versions'].each do |version|
         puts "building #{version}"
         FileUtils.rm_rf('build')
