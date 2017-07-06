@@ -13,7 +13,7 @@ layout: home
 
 The effectiveness of curation, analysis, and sharing is dependent upon the degree to which the structure of data and the meanings of terms can be agreed upon.  When data is transmitted from one system to another, both systems must agree on what that data means, and the format in which it is transmitted.
 
-The ClinGen [Data Model Working Group](http://clinicalgenome.org/about/working-groups/data-model/) was formed in order to:
+The ClinGen [Data Model Working Group](https://clinicalgenome.org/working-groups/data-model/) was formed in order to:
 
    * Develop a core conceptual model and data dictionary for the purposes of informing all other WG related activities with respect to data structure and content
    * Provide a common and consistent set of definitions around the core concepts, attributes and terminology throughout the ClinGen domain
@@ -26,6 +26,6 @@ The process by which the Data Model Working Group is approaching this set of goa
    * Use the conceptual model to define a resource model that can be used as the basis for a messaging serialization
    * Create documentation and examples explaining the use of the conceptual and resource models.
 
-This site documents the models created by the Data Model Working Group.  Following the links for each model listed below will lead to the documentation for that model. Note that the model is in pre-release status, caution is advised when building software based on the model (see [release management](/release_management.html))
+This site documents the models created by the Data Model Working Group.  Following the links for each model listed below will lead to the documentation for that model. Note that the model is in pre-release status, caution is advised when building software based on the model (see [release management](/releases.html))
 
 [Allele Model](allele/): Models the concepts of allele, reference and sequence.
