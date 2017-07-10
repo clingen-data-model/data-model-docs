@@ -25,6 +25,7 @@ puts "Creating local repository"
 FileUtils.rm_rf Dir.glob("#{DOC_REPO_LOCAL}/*") # remove everything except dotfiles (like '.git'...)
 FileUtils.cp_r("build/.", DOC_REPO_LOCAL)
 
+puts "Creating staging dir"
 FileUtils.mkdir_p('stage')
 
 FileUtils.cd('stage') do

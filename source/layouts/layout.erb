@@ -14,7 +14,7 @@
 
     <%= stylesheet_link_tag "bootstrap", "bootstrap-theme", "brand2" %>
     <% (current_page.data.append_css || []).each do |cssfile| %>
-      <%= stylesheet_link_tag cssfile %>
+    <%= stylesheet_link_tag cssfile %>
     <% end %>
 
     <% if build? %>
