@@ -4,9 +4,8 @@ require 'git'
 require 'yaml'
 require 'fileutils'
 
-DOC_REPO_URI =
-  "git@github.com:clingen-data-model/clingen-data-model.github.io.git"
-DOC_REPO_LOCAL = 'clingen-data-model.github.io'
+DOC_REPO_URI = "git@github.com:clingen-data-model/clingen-data-model.github.io.git"
+DOC_REPO_LOCAL = '../clingen-data-model.github.io.git'
 
 # load the list of versions
 models = YAML.load_file('data/models.yml')
@@ -16,54 +15,35 @@ puts "Cleaning old builds"
 FileUtils.rm_rf('build')
 FileUtils.rm_rf('stage')
 FileUtils.rm_rf(DOC_REPO_LOCAL)
-puts "checking out github pages repo"
-Git.clone DOC_REPO_URI, DOC_REPO_LOCAL, :depth => 1
-puts "building base repo"
+#puts "checking out github pages repo"
+#Git.clone DOC_REPO_URI, DOC_REPO_LOCAL, :depth => 1
+puts "Building base repo"
 `bundle exec middleman build`
 
+#Creating local repository
+puts "Creating local repository"
 FileUtils.rm_rf Dir.glob("#{DOC_REPO_LOCAL}/*") # remove everything except dotfiles (like '.git'...)
+#Copy built files in build directory
 FileUtils.cp_r("build/.", DOC_REPO_LOCAL)
 
-FileUtils.mkdir_p('stage')
+#Creating stage directory
+#puts "Creating stage directory"
+#FileUtils.mkdir_p('stage')
 
-FileUtils.cd('stage') do
-  puts "building models"
-  models.each do |k, v|
-    puts "building #{k}"
-    puts v.to_yaml
-    repo = Git.clone(v['repository'], k)
-    FileUtils.mkdir_p(File.join('..', DOC_REPO_LOCAL, k))
-    FileUtils.cd(k) do
-      puts "buliding master"
-      repo.checkout('master')
-      raise "error installing bundle for master of #{k}" unless system('bundle')
-      raise "error building master of #{k}" unless system('bundle', 'exec', 'middleman', 'build')
-      target = File.join('..', '..', DOC_REPO_LOCAL, k, 'master')
-      FileUtils.mv('build', target)
-      FileUtils.cd(File.join('..', '..', DOC_REPO_LOCAL, k)) do
-        Dir.glob(File.join('master', '*')).each do |target|
-          if File.directory? target
-            FileUtils.ln_s target, '.'
-          else
-            FileUtils.ln target, '.'
-          end
-        end
-      end
-      v['versions'].each do |version|
-        puts "building #{version}"
-        FileUtils.rm_rf('build')
-        repo.checkout(version)
-        raise "error installing bundle for #{version} of #{k}" unless system('bundle')
-        raise "error building #{version} of #{k}" unless system('bundle', 'exec', 'middleman', 'build')
-        target = File.join('..', '..', DOC_REPO_LOCAL, k, version)
-        FileUtils.mv('build', target)
-      end
-    end
-  end
-end
-
-g = Git.open(DOC_REPO_LOCAL)
-g.add(:all=>true)
+#FileUtils.cd('stage') do
+  #puts "building models"
+  #models.each do |k, v|
+    #puts "building #{k}"
+    #puts v.to_yaml
+    #repo = Git.clone(v['repository'], k)
+    #FileUtils.mkdir_p(File.join('..', DOC_REPO_LOCAL, k))
+    #FileUtils.cd(k) do
+      #puts "buliding master"
+    #end
+  #end
+#end
+#g = Git.open(DOC_REPO_LOCAL)
+#g.add(:all=>true)
 
 puts "Changes are staged to #{DOC_REPO_LOCAL}, 'git commit' there if you dare..."
 
