@@ -21,6 +21,7 @@ Git.clone DOC_REPO_URI, DOC_REPO_LOCAL, :depth => 1
 puts "building base repo"
 `bundle exec middleman build`
 
+puts "Creating local repository"
 FileUtils.rm_rf Dir.glob("#{DOC_REPO_LOCAL}/*") # remove everything except dotfiles (like '.git'...)
 FileUtils.cp_r("build/.", DOC_REPO_LOCAL)
 
