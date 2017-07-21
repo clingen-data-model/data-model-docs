@@ -51,7 +51,7 @@ helpers do
   end
 end
 
-# Enable Asset Hosts
+# Enable Asset Hosts (This enables clingen-static-resources path)
 activate :asset_host
     
 set :asset_host do |asset|
@@ -59,9 +59,7 @@ set :asset_host do |asset|
 end
 
 set :css_dir, 'stylesheets'
-
 set :js_dir, 'javascripts'
-
 set :images_dir, 'images'
 
 # Build-specific configuration
