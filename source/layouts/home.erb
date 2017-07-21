@@ -2,12 +2,13 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-4 col-md-3 sidebar">
+    	 <div class='nav-sidebar nav-sidebar-title'>
+          	<% link_to "https://clinicalgenome.org" do %>
+            	<%= image_tag 'clingen-doc-logo.png', width: "80%", height: "80%", alt: "ClinGen Documentation", class: "img-responsive" %>
+          	<% end %>
+        	</div>
       <ul class="nav nav-sidebar">
-        <li class='nav-sidebar-title'>
-          <% link_to "https://clinicalgenome.org" do %>
-            <%= image_tag 'clingen-doc-logo.png', width: "100%", height: "100%", alt: "ClinGen Documentation", class: "img-responsive" %>
-          <% end %>
-        </li>
+        
         <li><%= link_to "Overview", "/" %></li>
         <li><%= link_to "FHIR", "/fhir.html" %></li>
         <li><%= link_to "Releases", "/releases.html" %></li>
