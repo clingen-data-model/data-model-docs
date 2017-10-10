@@ -49,13 +49,21 @@ helpers do
     end
     %(<li class="#{model}">#{link}</li>)
   end
+  def model_link_nav(model)
+    resource = "#{model}/master/index.html"
+    link = link_to(resource) do
+      %(<span class="glyphicon #{data.models[model].icon}"></span>#{model.capitalize})
+    end
+    %(<li class="#{model} list-group-item"><h5>#{link}</h5></li>)
+  end
 end
 
 # Enable Asset Hosts (This enables clingen-static-resources path)
 activate :asset_host
     
 set :asset_host do |asset|
-  'http://datamodel.clinicalgenome.org/clingen-static-resources/'.to_s
+  #'http://datamodel.clinicalgenome.org/clingen-static-resources/'.to_s
+  '/'.to_s
 end
 
 set :css_dir, 'stylesheets'
