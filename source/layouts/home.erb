@@ -1,29 +1,22 @@
-<% wrap_layout :layout do %>
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-4 col-md-3 sidebar">
-    	 <div class='nav-sidebar nav-sidebar-title'>
-          	<% link_to "https://clinicalgenome.org" do %>
-            	<%= image_tag 'clingen-doc-logo.png', width: "80%", height: "80%", alt: "ClinGen Documentation", class: "img-responsive" %>
-          	<% end %>
-        	</div>
-      <ul class="nav nav-sidebar">
-        
-        <li><%= link_to "Overview", "/" %></li>
-        <li><%= link_to "FHIR", "/fhir.html" %></li>
-        <li><%= link_to "Releases", "/releases.html" %></li>
-        <li><%= link_to "GitHub Project", "https://github.com/tnavatar/clingen-data-model" %></li>
-        <% data.models.each do |m, config| %>
-          <%= model_link(m) %>
-        <% end %>
-      </ul>
-    </div>
-    <div class="col-sm-8 col-sm-offset-4 col-md-9 col-md-offset-3 main">
+<% wrap_layout :layout  do %>
+    <div class="col-sm-8 col-xs-12 col-md-9 col-lg-10">
       <article>
         <h1><%= current_page.data.title %></h1>
+        <hr class='col-sm-12' />
         <%= yield %>
       </article>
     </div>
-  </div>
-</div>
+    <div class="col-sm-4 col-md-3 col-lg-2">
+      <div class="list-group sidenav">
+        <ul class="list-unstyled">
+          <li class="list-group-item"><h5><%= link_to "Overview", "/" %></h5></li>
+          <li class="list-group-item"><h5><%= link_to "FHIR", "/fhir.html" %></h5></li>
+          <li class="list-group-item"><h5><%= link_to "Releases", "/releases.html" %></h5></li>
+          <li class="list-group-item"><h5><%= link_to "GitHub Project", "https://github.com/clingen-data-model/" %></h5></li>
+          <% data.models.each do |m, config| %>
+            <%= model_link_nav(m) %>
+          <% end %>
+        </ul>
+      </div>
+    </div>
 <% end %>
