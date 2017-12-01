@@ -51,15 +51,15 @@ FileUtils.cd('stage') do
           end
         end
       end
-      v['versions'].each do |version|
-        puts "building #{version}"
-        FileUtils.rm_rf('build')
-        repo.checkout(version)
-        raise "error installing bundle for #{version} of #{k}" unless system('bundle')
-        raise "error building #{version} of #{k}" unless system('bundle', 'exec', 'middleman', 'build')
-        target = File.join('..', '..', DOC_REPO_LOCAL, k, version)
-        FileUtils.mv('build', target)
-      end
+#     v['versions'].each do |version|
+#       puts "building #{version}"
+#       FileUtils.rm_rf('build')
+#       repo.checkout(version)
+#       raise "error installing bundle for #{version} of #{k}" unless system('bundle')
+#       raise "error building #{version} of #{k}" unless system('bundle', 'exec', 'middleman', 'build')
+#       target = File.join('..', '..', DOC_REPO_LOCAL, k, version)
+#       FileUtils.mv('build', target)
+#     end
     end
   end
 end
