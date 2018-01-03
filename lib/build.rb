@@ -39,7 +39,7 @@ FileUtils.cd('stage') do
       puts "buliding master"
       repo.checkout('master')
       raise "error installing bundle for master of #{k}" unless system('bundle')
-      raise "error building master of #{k}" unless system('bundle', 'exec', 'middleman', 'build','--verbose')
+      raise "error building master of #{k}" unless system('bundle', 'exec', 'middleman', 'build')
       target = File.join('..', '..', DOC_REPO_LOCAL, k, 'master')
       FileUtils.mv('build', target)
       FileUtils.cd(File.join('..', '..', DOC_REPO_LOCAL, k)) do
