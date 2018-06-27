@@ -43,14 +43,14 @@
 # Methods defined in the helpers block are available in templates
 helpers do
   def model_link(model)
-    resource = "#{model}/master/index.html"
+    resource = "#{model}/index.html"
     link = link_to(resource) do
       %(<span class="glyphicon #{data.models[model].icon}"></span>#{model.capitalize})
     end
     %(<li class="#{model}">#{link}</li>)
   end
   def model_link_nav(model)
-    resource = "#{model}/master/index.html"
+    resource = "#{model}/index.html"
     link = link_to(resource) do
       %(<span class="glyphicon #{data.models[model].icon}"></span>#{model.capitalize})
     end
