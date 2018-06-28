@@ -3,7 +3,38 @@ title: ClinGen Data Model
 layout: home
 
 ---
-
+<div class="row">
+   <div class="col-sm-4">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <img src="/images/platform.jpg" class="img-responsive img-rounded" />
+          <h3 class="">Platform</h3>
+          <p>Something to say here</p>
+          <div><a href="#" class="btn btn-default">Learn more</a></div>
+        </div>
+      </div>
+   </div>
+   <div class="col-sm-4">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <img src="/images/model.jpg" class="img-responsive img-rounded" />
+          <h3 class="">Data Models</h3>
+          <p>Something to say here</p>
+          <div><a href="/interpretation/master/index.html" class="btn btn-default">Interpretation Model</a> <a href="/allele/master/index.html" class="btn btn-default">Allele Model</a></div>
+        </div>
+      </div>
+   </div>
+   <div class="col-sm-4">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <img src="/images/tools.jpg" class="img-responsive img-rounded" />
+          <h3 class="">Tools &amp; Repositories</h3>
+          <p>Something to say here</p>
+          <div><a href="#" class="btn btn-default">Learn more</a></div>
+        </div>
+      </div>
+   </div>
+</div>
 [ClinGen](http://clinicalgenome.org) is an NIH-funded resource centered on clinically-relevant genomic alleles.  The goal of the ClinGen project is to enhance patient care through:
 
    * Sharing of clinically-relevant genomic data
