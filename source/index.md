@@ -1,33 +1,43 @@
 ---
-title: ClinGen Data Model
+title: ClinGen Data Exchange
 layout: home
 
 ---
+<div style="text-align:right"><em><small>(last updated Jun.26.2018)</small></em></div>
 
-[ClinGen](http://clinicalgenome.org) is an NIH-funded resource centered on clinically-relevant genomic alleles.  The goal of the ClinGen project is to enhance patient care through:
+<div style="border:solid;padding:5px">
+<em>Pardon Our Appearence While We Reoganize!</em><br/>
+We are in the process of overhauling our site to make it easier to access all the infromation about the Data Exchange. <br/>
+However, the sections below should provide an overview of the activities and resources available now.
+</div>
+<br/>
+This site is dedicated to providing updates on developments and documentation on the Data Exchange platform, data models and tools produced by the ClinGen Data Exchange Working Group. 
 
-   * Sharing of clinically-relevant genomic data
-   * Expert curation, creating knowledge from genomic data 
-   * Machine learning on genomic data to discover new clinical relevance.
+The ClinGen Data Exchange is a comprised of the platform, data models and tools that enable an environment of standardized exchange of genomic knowledge. The Data Exchange is designed to enable a consistent approach to produce and consume the full suite of genomic knowledge curated in ClinGen. Access to the Data Exchange is currently accessible to all systems within ClinGen and may potentially be made available to external systems in the future. 
+
+
+###Collaborations, Interactions & Integrations
+* **[Allele Registry](http://reg.genome.net)** - The ClinGen Allele Registry has adopted the Allele Model.
+* **VCI's ClinVar Submission Process** - [Tools](http://dataexchange.clinicalgenome.org/interpretation/tools.html) have been developed to transform and generate the internal VCI representation of variant interpretations into valid clinvar submission records. Currently manual, soon to be integrated with the VCI's User Interface.
+* **[SEPIO](https://github.com/monarch-initiative/SEPIO-ontology/wiki)** - The Monarch Intiative's Scientific Evidence Provenance Information Ontology has become the basis for the Interpretation modeling approach. Plans are to continue developing all future knowledge models using the approach developed here.
+* **[GA4GH](http://www.ga4gh.org)** - ClinGen is a driver project for the GA4GH and heavily involved in the Genomic Knowledge Standards (GSK) workstream to harmonize our models for both Variants (aka Alleles) and Variant Annotations (aka Interpretations). The ClinVar Submitter tools are planned to be a pilot project to illustrate the utility of the GA4GH GKS Variant model.
+* **[HL7 Clinical Genomics(CG)](http://www.hl7.org/Special/committees/clingenomics/overview.cfm)** - ClinGen data exchange modeling members actively participate in HL7's CG WG to provide a communication channel for overlapping objectives.
+
+###Data Models
+* The [Allele Model](http://dataexchange.clinicalgenome.org/allele) was release in 2017 and is the basis for the JSON-LD representation of alleles in the [ClinGen Allele Registry](http://reg.genome.net).
+* The [Interpretation Model](http://dataexchange.clinicalgenome.org/interpretation) was released in June 2018. This first interpertation model was scoped to provide support for Variant Pathogenicity Interpretations as specified by the 2015 ACMG ISV guidelines.
 
 <br/>
-The effectiveness of curation, analysis, and sharing is dependent upon the degree to which the structure of data and the meanings of terms can be agreed upon.  When data is transmitted from one system to another, both systems must agree on what that data means, and the format in which it is transmitted.
+<b>Current Plans</b>
+There will be several more Interpretation models developed and implemented to support the sharing of the other types of curated genomic knowledge within ClinGen in the upcoming months.  These models will be documented on this site once released. 
 
-The ClinGen [Data Model Working Group](https://clinicalgenome.org/working-groups/data-model/) was formed in order to:
+###Platform
+The figure below illustrates the current platform also referred to as the ClinGen Data Exchange. Currently, the primary consumer of the platform data is the ClinGen website. And, several of the ClinGen curation systems are actively producing and sharing their data with the platform to be accessible on the website. 
 
-   * Develop a core conceptual model and data dictionary for the purposes of informing all other WG related activities with respect to data structure and content
-   * Provide a common and consistent set of definitions around the core concepts, attributes and terminology throughout the ClinGen domain
-   * Provide consistent representation of the information housed in the ClinGen resources to the public. 
+In the upcoming phase of platform development all curated genomic knowledge types will be modified to standardized models by the data exchange working group. And further integration opportunities outside the website will be explored.
 
-<br/>
-The process by which the Data Model Working Group is approaching this set of goals is to:
+![Infrastructure Diagram](../images/dataexchange-overview.jpg "The DataExchange Infrastructure")
 
-   * Define small useful data subsets to model
-   * For each such domain, create a conceptual data model and data dictionary to describe it.
-   * Use the conceptual model to define a resource model that can be used as the basis for a messaging serialization
-   * Create documentation and examples explaining the use of the conceptual and resource models.
+###Tools
+Information on the tools available for working with our models is currently located on the [Tools page](http://dataexchange.clinicalgenome.org/interpretation/tools.html) in the Interpretaion Model. This may be re-organized and moved in the future. This section will provide updates on how to access the information.
 
-<br/>
-This site documents the models created by the Data Model Working Group.  Following the links for each model listed below will lead to the documentation for that model. Note that the model is in pre-release status, caution is advised when building software based on the model (see [release management](/releases.html))
-
-[Allele Model](allele/): Models the concepts of allele, reference and sequence.
