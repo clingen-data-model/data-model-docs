@@ -17,14 +17,14 @@ The ClinGen Data Exchange is a comprised of the platform, data models and tools 
 
 
 ###Collaborations, Interactions & Integrations
-* **[Allele Registry](http://reg.genome.net)** - The ClinGen Allele Registry has adopted the Allele Model.
+* **[Allele Registry](http://reg.clinicalgenome.org)** - The ClinGen Allele Registry has adopted the Allele Model.
 * **VCI's ClinVar Submission Process** - [Tools](http://dataexchange.clinicalgenome.org/interpretation/tools.html) have been developed to transform and generate the internal VCI representation of variant interpretations into valid clinvar submission records. Currently manual, soon to be integrated with the VCI's User Interface.
 * **[SEPIO](https://github.com/monarch-initiative/SEPIO-ontology/wiki)** - The Monarch Intiative's Scientific Evidence Provenance Information Ontology has become the basis for the Interpretation modeling approach. Plans are to continue developing all future knowledge models using the approach developed here.
 * **[GA4GH](http://www.ga4gh.org)** - ClinGen is a driver project for the GA4GH and heavily involved in the Genomic Knowledge Standards (GSK) workstream to harmonize our models for both Variants (aka Alleles) and Variant Annotations (aka Interpretations). The ClinVar Submitter tools are planned to be a pilot project to illustrate the utility of the GA4GH GKS Variant model.
 * **[HL7 Clinical Genomics(CG)](http://www.hl7.org/Special/committees/clingenomics/overview.cfm)** - ClinGen data exchange modeling members actively participate in HL7's CG WG to provide a communication channel for overlapping objectives.
 
 ###Data Models
-* The [Allele Model](http://dataexchange.clinicalgenome.org/allele) was release in 2017 and is the basis for the JSON-LD representation of alleles in the [ClinGen Allele Registry](http://reg.genome.net).
+* The [Allele Model](http://dataexchange.clinicalgenome.org/allele) was release in 2017 and is the basis for the JSON-LD representation of alleles in the [ClinGen Allele Registry](http://reg.clinicalgenome.org).
 * The [Interpretation Model](http://dataexchange.clinicalgenome.org/interpretation) was released in June 2018. This first interpertation model was scoped to provide support for Variant Pathogenicity Interpretations as specified by the 2015 ACMG ISV guidelines.
 
 <br/>
