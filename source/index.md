@@ -3,7 +3,7 @@ title: ClinGen Data Exchange
 layout: home
 
 ---
-<div style="text-align:right"><em><small>(last updated Jun.26.2018)</small></em></div>
+<div style="text-align:right"><em><small>(last updated Jul.05.2018)</small></em></div>
 
 <div style="border:solid;padding:5px">
 <em>Pardon Our Appearence While We Reoganize!</em><br/>
